@@ -24,7 +24,7 @@ import { Product } from '../../models/product.model';
           @for (product of favorites(); track product.id) {
             <div class="fav-card" [id]="'fav-card-' + product.id">
               <div class="fav-card__img-wrap" [routerLink]="['/producto', product.id]">
-                <div class="fav-card__placeholder">{{ product.categoryLabel }}</div>
+                <img [src]="product.image" [alt]="product.name" class="fav-card__img">
               </div>
               <div class="fav-card__info">
                 <div class="fav-card__meta">
@@ -55,8 +55,9 @@ import { Product } from '../../models/product.model';
     /* Grid */
     .favoritos__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 32px; }
     .fav-card { border: 1px solid #E8E8E8; display: flex; flex-direction: column; }
-    .fav-card__img-wrap { aspect-ratio: 1; cursor: pointer; }
-    .fav-card__placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1a1a2e, #0f3460); color: #fff; font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; }
+    .fav-card__img-wrap { aspect-ratio: 1; cursor: pointer; overflow: hidden; background: #f5f5f5; }
+    .fav-card__img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s; }
+    .fav-card__img-wrap:hover .fav-card__img { transform: scale(1.05); }
     .fav-card__info { padding: 16px; display: flex; flex-direction: column; gap: 6px; }
     .fav-card__meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
     .fav-card__name { font-size: 0.85rem; font-weight: 800; font-style: italic; }

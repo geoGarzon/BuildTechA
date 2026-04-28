@@ -17,11 +17,8 @@ import { Product } from '../../models/product.model';
         <section class="product-detail__hero">
           <div class="container">
             <div class="product-detail__image-wrap">
-              <div class="product-detail__image-placeholder">
-                <span>{{ product()!.categoryLabel }}</span>
-                <strong>{{ product()!.name }}</strong>
+                <img [src]="product()!.image" [alt]="product()!.name" class="product-detail__img">
               </div>
-            </div>
             <div class="product-detail__info">
               <span class="product-detail__category">{{ product()!.categoryLabel }}</span>
               <h1 class="product-detail__name">{{ product()!.name }}</h1>
@@ -91,9 +88,8 @@ import { Product } from '../../models/product.model';
 
     /* Hero */
     .product-detail__hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding-top: 60px; padding-bottom: 60px; }
-    .product-detail__image-wrap { background: #f5f5f5; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
-    .product-detail__image-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; background: linear-gradient(135deg, #1a1a2e, #0f3460); color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-align: center; padding: 20px; }
-    .product-detail__image-placeholder strong { font-size: 1.1rem; font-style: italic; }
+    .product-detail__image-wrap { background: #f5f5f5; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .product-detail__img { width: 100%; height: 100%; object-fit: contain; }
     .product-detail__category { font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; color: #999; display: block; margin-bottom: 8px; }
     .product-detail__name { font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
     .product-detail__price { font-size: 1.3rem; font-weight: 700; font-style: italic; margin-bottom: 16px; }

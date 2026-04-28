@@ -45,7 +45,7 @@ import { Product, Category } from '../../models/product.model';
                   aria-label="Agregar a favoritos">
                   <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="1.5"/></svg>
                 </button>
-                <div class="product-card__placeholder">{{ product.categoryLabel }}</div>
+                <img [src]="product.image" [alt]="product.name" class="product-card__img">
               </div>
               <div class="product-card__info">
                 <span class="product-card__spec">{{ product.spec }}</span>
@@ -75,8 +75,9 @@ import { Product, Category } from '../../models/product.model';
     .catalog__count { font-size: 0.65rem; color: #999; letter-spacing: 2px; margin-bottom: 40px; }
     .catalog__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 32px; }
     .product-card { display: flex; flex-direction: column; border: 1px solid #E8E8E8; }
-    .product-card__img-wrap { position: relative; background: #f5f5f5; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-    .product-card__placeholder { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; color: #fff; background: linear-gradient(135deg, #1a1a2e, #0f3460); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .product-card__img-wrap { position: relative; background: #f5f5f5; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; }
+    .product-card__img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s; }
+    .product-card__img-wrap:hover .product-card__img { transform: scale(1.05); }
     .product-card__fav-btn { position: absolute; top: 12px; right: 12px; z-index: 2; background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
     .product-card__fav-btn svg { width: 18px; height: 18px; fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; }
     .product-card__fav-btn.active svg { fill: #e63946; stroke: #e63946; }
